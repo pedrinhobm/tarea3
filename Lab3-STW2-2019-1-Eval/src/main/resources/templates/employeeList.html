@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lista de Empleados</title>
+    </head>
+    <body>
+        <h1>Lista de Empleados</h1>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="empleado : ${listaEmpleados}">
+                    <td th:text="${empleado.employeeId}"></td>
+                    <td th:text="${empleado.firstName}"></td>
+                    <td th:text="${empleado.lastName}"></td>
+                    <td>
+                        <a th:href="@{'/employee/info/' + ${empleado.employeeId}}">Ver</a> |
+                        <a th:href="@{'/employee/delete/' + ${empleado.employeeId}}">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </body>
+</html>
+
